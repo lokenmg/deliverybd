@@ -118,7 +118,7 @@ CREATE TABLE "repartidor" (
   "password" varchar(120) NOT NULL,
   "licencia" varchar(100) NOT NULL,
   "curp" varchar(100) NOT NULL,
-  "antecedentes_penales" varchar(100) NOT NULL,
+  "antecedentes" varchar(100) NOT NULL,
   "vehiculo" BIGINT,
   "ine" varchar(100) NOT NULL,
   "direccion" BIGINT
@@ -245,7 +245,7 @@ INSERT INTO "categoria_producto" ("id_categoria", "id_producto") VALUES
 (2, 2);
 
 -- Insertar datos en la tabla repartidor
-INSERT INTO "repartidor" ("id_usuario", "nombre", "apellidos", "fecha_nacimiento", "genero", "telefono", "email", "password", "licencia", "curp", "antecedentes_penales", "vehiculo", "ine", "direccion") VALUES
+INSERT INTO "repartidor" ("id_usuario", "nombre", "apellidos", "fecha_nacimiento", "genero", "telefono", "email", "password", "licencia", "curp", "antecedentes", "vehiculo", "ine", "direccion") VALUES
 (3, 'Carlos', 'López', '1990-01-01', 1, '1234567890', 'carlos.lopez@example.com', 'password123', 'LIC1234', 'CURP12345', 'Sin antecedentes', 1, 'INE12345', 1);
 
 -- Insertar datos en la tabla usuario
