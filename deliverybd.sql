@@ -70,6 +70,7 @@ CREATE TABLE "encargado" (
   "nombre" varchar(40) NOT NULL,
   "apellidos" varchar(100) NOT NULL,
   "email" varchar(120) NOT NULL,
+  "password" varchar(120) NOT NULL, 
   "genero" BIGINT,
   "curp" varchar(100) NOT NULL,
   "ine" varchar(100) NOT NULL,
@@ -114,7 +115,7 @@ CREATE TABLE "repartidor" (
   "genero" BIGINT NOT NULL,
   "telefono" varchar(30) NOT NULL,
   "email" varchar(120) NOT NULL,
-  "contraseña" varchar(120) NOT NULL,
+  "password" varchar(120) NOT NULL,
   "licencia" varchar(100) NOT NULL,
   "curp" varchar(100) NOT NULL,
   "antecedentes_penales" varchar(100) NOT NULL,
@@ -127,10 +128,10 @@ CREATE TABLE "usuario" (
   "id_usuario" BIGINT NOT NULL PRIMARY KEY,
   "nombre" varchar(80) NOT NULL,
   "apellidos" varchar(120) NOT NULL,
-  "feha_nacimiento" date NOT NULL,
+  "fecha_nacimiento" date NOT NULL,
   "genero" BIGINT,
   "email" varchar(120) NOT NULL,
-  "contraseña" varchar(120),
+  "password" varchar(120),
   "telefono" varchar(30) NOT NULL,
   "direccion" BIGINT NOT NULL,
   "foto_perfil" varchar(100)
@@ -224,9 +225,9 @@ INSERT INTO "direccion" ("id_direccion", "cp", "estado", "municipio", "colonia",
 (2, 67890, 'Estado B', 'Municipio B', 'Colonia B', 'Calle 4', 'Calle 5', NULL, 'Referencia B', '456', NULL);
 
 -- Insertar datos en la tabla encargado
-INSERT INTO "encargado" ("id_usuario", "nombre", "apellidos", "email", "genero", "curp", "ine", "antecedentes", "direccion") VALUES
-(1, 'Juan', 'Pérez', 'juan.perez@example.com', 1, 'CURP1234', 'INE1234', 'Sin antecedentes', 1),
-(2, 'María', 'Gómez', 'maria.gomez@example.com', 2, 'CURP5678', 'INE5678', 'Sin antecedentes', 2);
+INSERT INTO "encargado" ("id_usuario", "nombre", "apellidos", "email", "genero", "curp", "ine", "antecedentes", "direccion", "password") VALUES
+(1, 'Juan', 'Pérez', 'juan.perez@example.com', 1, 'CURP1234', 'INE1234', 'Sin antecedentes', 1, 'password123'),
+(2, 'María', 'Gómez', 'maria.gomez@example.com', 2, 'CURP5678', 'INE5678', 'Sin antecedentes', 2, 'password456');
 
 -- Insertar datos en la tabla tienda
 INSERT INTO "tienda" ("id_tienda", "nombre", "direccion", "telefono", "email", "descripcion", "horarios", "encargado", "calificacion") VALUES
@@ -244,11 +245,11 @@ INSERT INTO "categoria_producto" ("id_categoria", "id_producto") VALUES
 (2, 2);
 
 -- Insertar datos en la tabla repartidor
-INSERT INTO "repartidor" ("id_usuario", "nombre", "apellidos", "fecha_nacimiento", "genero", "telefono", "email", "contraseña", "licencia", "curp", "antecedentes_penales", "vehiculo", "ine", "direccion") VALUES
+INSERT INTO "repartidor" ("id_usuario", "nombre", "apellidos", "fecha_nacimiento", "genero", "telefono", "email", "password", "licencia", "curp", "antecedentes_penales", "vehiculo", "ine", "direccion") VALUES
 (3, 'Carlos', 'López', '1990-01-01', 1, '1234567890', 'carlos.lopez@example.com', 'password123', 'LIC1234', 'CURP12345', 'Sin antecedentes', 1, 'INE12345', 1);
 
 -- Insertar datos en la tabla usuario
-INSERT INTO "usuario" ("id_usuario", "nombre", "apellidos", "feha_nacimiento", "genero", "email", "contraseña", "telefono", "direccion", "foto_perfil") VALUES
+INSERT INTO "usuario" ("id_usuario", "nombre", "apellidos", "fecha_nacimiento", "genero", "email", "password", "telefono", "direccion", "foto_perfil") VALUES
 (4, 'Ana', 'Martínez', '1985-05-05', 2, 'ana.martinez@example.com', 'password456', '0987654321', 2, 'perfil_ana.jpg'),
 (5, 'Luis', 'Hernández', '1978-08-08', 1, 'luis.hernandez@example.com', 'password789', '5678901234', 1, 'perfil_luis.jpg');
 
@@ -261,4 +262,3 @@ INSERT INTO "nota_venta" ("n_venta", "fecha_creacion", "cliente", "estado_pago",
 INSERT INTO "detalle_venta" ("id_detalle", "cantidad", "id_producto", "n_venta", "subtotal") VALUES
 (1, 2, 1, 1, 200.00),
 (2, 1, 2, 2, 200.00);
-
